@@ -102,3 +102,541 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+=======
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mario's Cyber Form</title>
+<style>
+  :root{
+    --bg: #cee0f5;
+    --btn: #849ebd;
+    --btn-hover:#6c88a3;
+    --card:#ffffff;
+    --maxw:820px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background:var(--bg);
+    color:#142032;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px;
+  }
+
+  .page { width:100%; max-width:var(--maxw); }
+
+  .card {
+    background:var(--card);
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    margin:12px 0;
+  }
+
+  header.card {
+    text-align:center;
+  }
+
+  h1{margin:6px 0 6px; font-size:24px;}
+  p.lead{margin:0 0 12px;color:#31506b; font-size:15px}
+
+  /* big buttons */
+  .btn {
+    background:var(--btn);
+    color:#fff;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    font-size:15px;
+    cursor:pointer;
+    transition: transform .18s ease, background .18s ease;
+    display:inline-block;
+  }
+  .btn:hover{ transform:scale(1.06); background:var(--btn-hover) }
+
+  /* layout for two-column controls (responsive) */
+  .row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .col{ flex:1 1 0; min-width:120px; }
+  .center{ text-align:center; }
+
+  label{ font-size:14px; color:#203642; }
+
+  input[type="password"],
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width:100%;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid #cfdbe6;
+    font-size:15px;
+    outline:none;
+  }
+
+  textarea{ resize:vertical; min-height:80px; }
+
+  /* meter */
+  .meter{ width:100%; height:14px; background:#eee; border-radius:8px; margin:10px 0; overflow:hidden; }
+  .meter > span{ display:block; height:100%; width:0%; background: linear-gradient(90deg,#f05,#6cf); border-radius:8px; transition:width .18s ease; }
+
+  /* checkbox group layout */
+  .checkbox-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin:8px 0 12px 0;
+  }
+  .checkbox-row label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background: #f6fbff;
+    padding:6px 10px;
+    border-radius:10px;
+    border:1px solid #e6eef6;
+    font-size:13px;
+  }
+
+  .small { font-size:13px; color:#2b4b5f; }
+  .muted{ color:#6b7882; font-size:13px; margin-top:8px; }
+
+  /* spacing helpers */
+  .gap-top{ margin-top:14px; }
+  .gap-small{ margin-top:8px; }
+
+  /* responsive */
+  @media (max-width:520px){
+    .row{ flex-direction:column; }
+    .col{ width:100%; }
+    .btn{ width:100%; }
+  }
+
+  /* home buttons layout */
+  .home-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+  @media (max-width:640px){
+    .home-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header with new title + subtitle -->
+    <header class="card" id="headerCard">
+      <h1>Mario's Cyber Form</h1>
+      <p class="lead">Your interactive cybersecurity learning and testing platform</p>
+    </header>
+
+    <!-- Home card with buttons -->
+    <section class="card" id="homeSection">
+      <div style="text-align:center; margin-bottom:6px;">
+        <h2 style="margin:0 0 8px">Welcome</h2>
+        <div class="small muted">Choose a tool to begin</div>
+      </div>
+
+      <div class="home-grid" style="margin-top:18px;">
+        <button class="btn" onclick="showSection('passwordSection')">Password Strength Checker</button>
+        <button class="btn" onclick="showSection('encryptSection')">Encryption / Decryption Tool</button>
+        <button class="btn" onclick="showSection('learningSection')">Learning Hub</button>
+        <button class="btn" onclick="showSection('aboutSection')">About & Contact</button>
+      </div>
+    </section>
+
+    <!-- Password card -->
+    <section class="card section" id="passwordSection" style="display:none">
+      <div class="row" style="align-items:center; justify-content:space-between;">
+        <div style="flex:1">
+          <h2 style="margin:0 0 8px">Password Strength Checker</h2>
+          <div class="small muted">Type or generate a password and see entropy and tips</div>
+        </div>
+      </div>
+
+      <div class="gap-top">
+        <label for="passwordInput">Enter your password</label>
+        <input id="passwordInput" type="password" autocomplete="new-password" placeholder="Type your password...">
+      </div>
+
+      <div class="row gap-small" style="align-items:center; justify-content:flex-start;">
+        <label style="display:flex; align-items:center; gap:8px;">
+          <input id="showPassword" type="checkbox"> <span class="small">Show password</span>
+        </label>
+        <div style="flex:1"></div>
+        <button class="btn" onclick="showSection('homeSection')" style="width:auto">Back to Home</button>
+      </div>
+
+      <div class="gap-small">
+        <div class="meter"><span id="strengthBar"></span></div>
+        <div id="scoreText" class="muted">Entropy — 0 bits</div>
+        <ul id="adviceList" style="margin-top:8px"></ul>
+      </div>
+
+      <hr style="margin:14px 0">
+
+      <h3 style="margin:0 0 8px">Generate a strong password</h3>
+      <div class="row" style="align-items:center;">
+        <div style="min-width:110px;">
+          <label for="pwLength">Length</label>
+          <input id="pwLength" type="number" min="8" max="32" value="16">
+        </div>
+
+        <div class="col">
+          <div class="checkbox-row" id="charOptions">
+            <label><input id="useLower" type="checkbox" checked> Lowercase</label>
+            <label><input id="useUpper" type="checkbox" checked> Uppercase</label>
+            <label><input id="useDigits" type="checkbox" checked> Digits</label>
+            <label><input id="useSymbols" type="checkbox" checked> Symbols</label>
+          </div>
+        </div>
+
+        <div style="min-width:140px; display:flex; gap:8px; align-items:center;">
+          <button id="generateBtn" class="btn">Generate</button>
+        </div>
+      </div>
+
+      <div class="gap-top" style="display:flex; gap:8px; align-items:center; justify-content:flex-start;">
+        <button id="copyPasswordBtn" class="btn" style="width:auto; padding:9px 14px;">Copy Password</button>
+        <div id="copyPwMsg" class="muted" style="margin-left:8px"></div>
+      </div>
+    </section>
+
+    <!-- Encryption card -->
+    <section class="card section" id="encryptSection" style="display:none; margin-top:12px">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 style="margin:0 0 8px">Encryption / Decryption</h2>
+        <button class="btn" onclick="showSection('homeSection')" style="width:auto">Back to Home</button>
+      </div>
+
+      <div class="gap-top">
+        <label for="inputText">Input (plaintext to encrypt, or ciphertext to decrypt)</label>
+        <textarea id="inputText" placeholder="Type or paste text here..." rows="4"></textarea>
+      </div>
+
+      <div class="row gap-top" style="align-items:center;">
+        <button id="encryptBtn" class="btn">Encrypt</button>
+        <button id="decryptBtn" class="btn">Decrypt</button>
+      </div>
+
+      <div class="gap-top">
+        <label for="outputText">Output</label>
+        <textarea id="outputText" placeholder="Result will appear here" rows="4" readonly></textarea>
+      </div>
+
+      <div class="gap-top" style="display:flex; gap:8px; align-items:center;">
+        <button id="copyOutputBtn" class="btn" style="width:auto; padding:9px 14px;">Copy Output</button>
+        <div id="copyOutMsg" class="muted" style="margin-left:8px"></div>
+      </div>
+    </section>
+
+    <!-- Learning Hub -->
+    <section class="card section" id="learningSection" style="display:none">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 style="margin:0 0 8px">Learning Hub</h2>
+        <button class="btn" onclick="showSection('homeSection')" style="width:auto">Back to Home</button>
+      </div>
+
+      <div style="margin-top:8px;">
+        <h3>Password Strength Checker</h3>
+        <p>The password strength checker helps you understand the security of your passwords. It analyzes:</p>
+    <ul>
+        <li>Length and complexity of the password</li>
+        <li>Use of lowercase, uppercase, digits, and symbols</li>
+        <li>Detection of common patterns and dictionary words</li>
+    </ul>
+    <p>Passwords are evaluated using entropy, measured in bits. Higher entropy indicates stronger, more secure passwords that are harder for attackers to guess.</p>
+    <p>The page generates strong passwords by randomly combining lowercase letters, uppercase letters, numbers, and symbols according to your selected criteria, ensuring high entropy and resistance to guessing or brute-force attacks.</p>
+        <h3>Encryption / Decryption Tool</h3>
+        <p>The encryption tool allows you to securely encrypt and decrypt text. Encryption converts your data into a secure format that cannot be read without the proper key, while decryption restores it to its original form.</p>
+    <p>This demonstrates important cybersecurity concepts:</p>
+    <ul>
+        <li>Symmetric key encryption</li>
+        <li>Safe handling of sensitive information</li>
+        <li>Client-side vs server-side encryption considerations</li>
+    </ul>
+    <p>Using this tool helps understand how data protection works in real-world applications, like securing passwords, messages, and personal data.</p>
+        <p class="muted">The tool demonstrates AES-GCM encryption in the browser using a demo key. For security details see the project docs.</p>
+      </div>
+    </section>
+
+    <!-- About & Contact -->
+    <section class="card section" id="aboutSection" style="display:none">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 style="margin:0 0 8px">About & Contact</h2>
+        <button class="btn" onclick="showSection('homeSection')" style="width:auto">Back to Home</button>
+      </div>
+
+      <div style="margin-top:8px;">
+        <p>Hello! I’m <strong>Mario</strong>, a cybersecurity professional passionate about building secure and user-friendly tools. This platform showcases practical cybersecurity concepts and interactive applications, including:</p>
+        <ul>
+        <li>Password security and strength analysis</li>
+        <li>Encryption and decryption concepts</li>
+        <li>Interactive web tools and usability</li>
+        <li>Secure handling of sensitive data</li>
+          <li>Web development, UX, and interactive applications</li>
+        </ul>
+
+        <h3>Contact</h3>
+        <ul>
+          <li>Email: <a href="mailto:dumbamari02@gmail.com">dumbamari02@gmail.com</a></li>
+          <li>Instagram: <a href="https://www.instagram.com/modestmarioo/" target="_blank">@modestmarioo</a></li>
+          <li>GitHub: <a href="https://github.com/MarioHUBB" target="_blank">https://github.com/MarioHUBB</a></li>
+        <p>Check out more of my projects on GitHub</p>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+/* ---------- Section navigation ---------- */
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+  // scroll to top of page for better UX
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+// default: show home
+showSection('homeSection');
+
+/* =========================
+   PASSWORD STRENGTH & GENERATOR
+   ========================= */
+const passwordInput = document.getElementById('passwordInput');
+const showPassword = document.getElementById('showPassword');
+const strengthBar = document.getElementById('strengthBar');
+const scoreText = document.getElementById('scoreText');
+const adviceList = document.getElementById('adviceList');
+const generateBtn = document.getElementById('generateBtn');
+const copyPasswordBtn = document.getElementById('copyPasswordBtn');
+const copyPwMsg = document.getElementById('copyPwMsg');
+
+const pwLength = document.getElementById('pwLength');
+const useLower = document.getElementById('useLower');
+const useUpper = document.getElementById('useUpper');
+const useDigits = document.getElementById('useDigits');
+const useSymbols = document.getElementById('useSymbols');
+
+function charClasses(p){
+  let sets=0;
+  if(/[a-z]/.test(p)) sets+=26;
+  if(/[A-Z]/.test(p)) sets+=26;
+  if(/[0-9]/.test(p)) sets+=10;
+  if(/[^A-Za-z0-9]/.test(p)) sets+=32;
+  return sets;
+}
+function entropyBits(p){
+  const sets = charClasses(p);
+  if(!p || sets===0) return 0;
+  return p.length * Math.log2(sets);
+}
+function scoreFromEntropy(bits){
+  if(bits < 28) return {label:'Very Weak', pct:12};
+  if(bits < 36) return {label:'Weak', pct:30};
+  if(bits < 60) return {label:'Reasonable', pct:60};
+  if(bits < 80) return {label:'Strong', pct:85};
+  return {label:'Very Strong', pct:100};
+}
+const dictionaryWords = ["password","1234","qwerty","admin","letmein","welcome","iloveyou","monkey","abc123","dragon","facebook","instagram"];
+
+function updateStrength(){
+  const p = passwordInput.value || '';
+  const bits = Math.round(entropyBits(p));
+  const s = scoreFromEntropy(bits);
+  strengthBar.style.width = s.pct + '%';
+  scoreText.textContent = `Entropy ≈ ${bits} bits — ${s.label}`;
+  adviceList.innerHTML = '';
+  if(p.length < 8) adviceList.innerHTML += '<li>Make it longer (≥12 recommended)</li>';
+  if(!/[A-Z]/.test(p)) adviceList.innerHTML += '<li>Add uppercase letters</li>';
+  if(!/[a-z]/.test(p)) adviceList.innerHTML += '<li>Add lowercase letters</li>';
+  if(!/[0-9]/.test(p)) adviceList.innerHTML += '<li>Add digits</li>';
+  if(!/[^A-Za-z0-9]/.test(p)) adviceList.innerHTML += '<li>Add symbols or use a passphrase</li>';
+  if(dictionaryWords.some(w => p.toLowerCase().includes(w))) adviceList.innerHTML += '<li>Avoid common words or sequences</li>';
+}
+passwordInput?.addEventListener('input', updateStrength);
+showPassword?.addEventListener('change', () => {
+  passwordInput.type = showPassword.checked ? 'text' : 'password';
+});
+
+/* Password generator */
+const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const DIGITS = '0123456789';
+const SYMBOLS = '!@#$%^&*()-_=+[]{};:,.<>/?~`|\\';
+
+function secureRandomInt(max){
+  const rnd = new Uint32Array(1);
+  window.crypto.getRandomValues(rnd);
+  return rnd[0] % max;
+}
+function generateSecurePassword(len, lower, upper, digits, symbols){
+  let charset = '';
+  if(lower) charset += LOWER;
+  if(upper) charset += UPPER;
+  if(digits) charset += DIGITS;
+  if(symbols) charset += SYMBOLS;
+  if(!charset) { alert('Select at least one character set'); return ''; }
+  let out = '';
+  for(let i=0;i<len;i++){
+    out += charset[ secureRandomInt(charset.length) ];
+  }
+  return out;
+}
+generateBtn.addEventListener('click', () => {
+  let length = parseInt(pwLength.value,10) || 16;
+  if(length < 8) length = 8;
+  if(length > 32) length = 32;
+  const pwd = generateSecurePassword(length, useLower.checked, useUpper.checked, useDigits.checked, useSymbols.checked);
+  passwordInput.value = pwd;
+  updateStrength();
+});
+copyPasswordBtn.addEventListener('click', async () => {
+  const val = passwordInput.value;
+  if(!val){ alert('Nothing to copy'); return; }
+  try{
+    await navigator.clipboard.writeText(val);
+    copyPwMsg.textContent = 'Copied!';
+    setTimeout(()=>copyPwMsg.textContent = '', 1800);
+  }catch(e){
+    alert('Copy failed: ' + e);
+  }
+});
+
+/* =========================
+   FRONT-END AES-GCM (obfuscated key using +5 Caesar + base64)
+   ========================= */
+
+/* original base64 (D6eBC5j/aCDx/7tuFP3VHzo4GztrhZnhTZt4RLkEGzY=) is stored obfuscated:
+   process: shift each character code by +5 then base64-encode result.
+   Here we have the base64 of that shifted string; at runtime we reverse it.
+   This hides the raw base64 in the HTML (obfuscation only).
+*/
+const obfB64 = 'STtqR0g6bzRmSEl9NDx5ektVOFtNf3Q5TH95d21fc21ZX3k5V1FwSkx/XkI=';
+
+function decodeDemoKeyBase64(){
+  // step1: atob to get shifted string
+  const shifted = atob(obfB64);
+  // step2: shift each char code back by -5 to recover original base64 string
+  let orig = '';
+  for(let i=0;i<shifted.length;i++){
+    const c = shifted.charCodeAt(i);
+    const origCode = (c - 5 + 256) % 256;
+    orig += String.fromCharCode(origCode);
+  }
+  return orig; // this is the original base64 key string
+}
+
+/* UI elements for encryption */
+const inputText = document.getElementById('inputText');
+const outputText = document.getElementById('outputText');
+const encryptBtn = document.getElementById('encryptBtn');
+const decryptBtn = document.getElementById('decryptBtn');
+const copyOutputBtn = document.getElementById('copyOutputBtn');
+const copyOutMsg = document.getElementById('copyOutMsg');
+
+let demoCryptoKey = null;
+encryptBtn.disabled = true;
+decryptBtn.disabled = true;
+
+/* import the recovered base64 key into CryptoKey */
+async function importDemoKey(){
+  try{
+    const b64 = decodeDemoKeyBase64(); // original base64 key
+    const raw = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    demoCryptoKey = await window.crypto.subtle.importKey('raw', raw, { name:'AES-GCM' }, false, ['encrypt','decrypt']);
+    encryptBtn.disabled = false;
+    decryptBtn.disabled = false;
+  }catch(e){
+    console.error('Failed to import demo key', e);
+    alert('Failed to import demo key: ' + e.message);
+  }
+}
+importDemoKey();
+
+function u8ToB64(u8){
+  return btoa(String.fromCharCode(...u8));
+}
+function b64ToU8(b64){
+  return Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+}
+async function encryptFrontend(plaintext){
+  if(!demoCryptoKey) throw new Error('key not ready');
+  const encoder = new TextEncoder();
+  const iv = window.crypto.getRandomValues(new Uint8Array(12));
+  const ct = await window.crypto.subtle.encrypt({ name:'AES-GCM', iv }, demoCryptoKey, encoder.encode(plaintext));
+  const ctU8 = new Uint8Array(ct);
+  const combined = new Uint8Array(iv.length + ctU8.length);
+  combined.set(iv, 0);
+  combined.set(ctU8, iv.length);
+  return u8ToB64(combined);
+}
+async function decryptFrontend(b64blob){
+  if(!demoCryptoKey) throw new Error('key not ready');
+  const decoder = new TextDecoder();
+  const combined = b64ToU8(b64blob);
+  if(combined.length < 13) throw new Error('Invalid ciphertext');
+  const iv = combined.slice(0,12);
+  const ct = combined.slice(12);
+  const pt = await window.crypto.subtle.decrypt({ name:'AES-GCM', iv }, demoCryptoKey, ct);
+  return decoder.decode(pt);
+}
+
+/* button actions */
+encryptBtn.addEventListener('click', async () => {
+  const txt = inputText.value || '';
+  if(!txt){ alert('Enter text to encrypt'); return; }
+  encryptBtn.disabled = true;
+  encryptBtn.textContent = 'Encrypting...';
+  try{
+    const b64 = await encryptFrontend(txt);
+    outputText.value = b64;
+  }catch(e){
+    alert('Encryption failed: ' + e.message);
+    console.error(e);
+  }finally{
+    encryptBtn.disabled = false;
+    encryptBtn.textContent = 'Encrypt';
+  }
+});
+
+decryptBtn.addEventListener('click', async () => {
+  const txt = inputText.value || '';
+  if(!txt){ alert('Enter base64 ciphertext to decrypt'); return; }
+  decryptBtn.disabled = true;
+  decryptBtn.textContent = 'Decrypting...';
+  try{
+    const plain = await decryptFrontend(txt);
+    outputText.value = plain;
+  }catch(e){
+    alert('Decryption failed: ' + e.message);
+    console.error(e);
+  }finally{
+    decryptBtn.disabled = false;
+    decryptBtn.textContent = 'Decrypt';
+  }
+});
+
+copyOutputBtn.addEventListener('click', async () => {
+  const val = outputText.value || '';
+  if(!val){ alert('Nothing to copy'); return; }
+  try{
+    await navigator.clipboard.writeText(val);
+    copyOutMsg.textContent = 'Copied!';
+    setTimeout(()=>copyOutMsg.textContent = '',1600);
+  }catch(e){
+    alert('Copy failed: ' + e);
+  }
+});
+</script>
+</body>
+</html>
+>>>>>>> 9548be7ca1792241a7c64b47e5c4ab5bab428dd5
