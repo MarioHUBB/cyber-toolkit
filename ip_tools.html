@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IP Address Tools — Mario's Cyber Toolkit</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">mario<span>://</span>cyber</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="password.html">Password</a></li>
+      <li><a href="encryption.html">Encrypt</a></li>
+      <li><a href="ip_tools.html">IP Tools</a></li>
+      <li><a href="base_converter.html">Base Conv</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-wrapper">
+
+      <div class="page-title fade-in fade-in-1">
+        <p class="eyebrow">// tool — 03</p>
+        <h1>IP Address Tools</h1>
+        <p>Subnet calculator and CIDR ↔ mask converter. All calculations run client-side instantly.</p>
+      </div>
+
+      <!-- CIDR ↔ Mask Converter -->
+      <div class="card fade-in fade-in-2">
+        <div class="card-header">
+          <h2>↔ Subnet Mask / CIDR Converter</h2>
+          <p>Enter a CIDR prefix (e.g. <code>/24</code>) to get the dotted-decimal mask, or enter a mask (e.g. <code>255.255.255.0</code>) to get CIDR.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="maskInput">CIDR or Subnet Mask</label>
+          <input type="text" id="maskInput" placeholder="/24  or  255.255.255.0" autocomplete="off" />
+        </div>
+
+        <div class="row mt-8">
+          <button class="btn btn-primary" onclick="convertMask()">Convert</button>
+        </div>
+
+        <div class="output-box mt-14" id="maskOutput">Result will appear here…</div>
+      </div>
+
+      <hr class="section-rule">
+
+      <!-- Subnet Calculator -->
+      <div class="card fade-in fade-in-3">
+        <div class="card-header">
+          <h2>🌐 Subnet Calculator</h2>
+          <p>Enter an IPv4 address and subnet mask to calculate network details.</p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="ipAddress">IP Address</label>
+            <input type="text" id="ipAddress" placeholder="192.168.1.10" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subnetMask">Subnet Mask</label>
+            <input type="text" id="subnetMask" placeholder="/24  or  255.255.255.0" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="row mt-8">
+          <button class="btn btn-primary" onclick="calculateSubnet()">Calculate</button>
+        </div>
+
+        <div class="output-box mt-14" id="subnetOutput">Enter an IP and mask, then click Calculate.</div>
+      </div>
+
+      <!-- Quick reference -->
+      <div class="card fade-in fade-in-4" style="background:rgba(0,119,204,0.03);">
+        <h3 class="mono text-accent" style="font-size:14px; margin-bottom:12px;">📋 Common Subnet Masks</h3>
+        <table class="result-table">
+          <tr><td>CIDR</td><td>Mask</td></tr>
+          <tr><td>/8</td><td>255.0.0.0</td></tr>
+          <tr><td>/16</td><td>255.255.0.0</td></tr>
+          <tr><td>/24</td><td>255.255.255.0</td></tr>
+          <tr><td>/25</td><td>255.255.255.128</td></tr>
+          <tr><td>/26</td><td>255.255.255.192</td></tr>
+          <tr><td>/27</td><td>255.255.255.224</td></tr>
+          <tr><td>/28</td><td>255.255.255.240</td></tr>
+          <tr><td>/30</td><td>255.255.255.252</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/MarioHUBB" target="_blank">GitHub</a>
+        <a href="mailto:dumbamari02@gmail.com">Email</a>
+        <a href="https://www.instagram.com/modestmarioo/" target="_blank">Instagram</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-copy">© 2026 Mario · 100% client-side · No data leaves your browser</div>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/ip_tools.js"></script>
+</body>
+</html>

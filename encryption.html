@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Encryption Tool — Mario's Cyber Form</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">mario<span>://</span>cyber</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="password.html">Password</a></li>
+      <li><a href="encryption.html">Encrypt</a></li>
+      <li><a href="ip_tools.html">IP Tools</a></li>
+      <li><a href="base_converter.html">Base Conv</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main>
+    <div class="page-wrapper">
+
+      <div class="page-title fade-in fade-in-1">
+        <p class="eyebrow">// tool — 02</p>
+        <h1>Encryption / Decryption</h1>
+        <p>AES-256-GCM symmetric encryption running entirely in your browser. Plaintext never leaves your device.</p>
+      </div>
+
+      <!-- Key status -->
+      <div class="card fade-in fade-in-2" style="padding:14px 20px;">
+        <span class="mono text-muted" id="keyStatus" style="font-size:13px;">⏳ Loading AES-256-GCM key…</span>
+      </div>
+
+      <!-- Encrypt / Decrypt card -->
+      <div class="card fade-in fade-in-3">
+        <div class="card-header">
+          <h2>🛡️ Encrypt or Decrypt Text</h2>
+          <p>Paste plaintext to encrypt, or paste a base64 ciphertext blob to decrypt.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputText">Input</label>
+          <textarea id="inputText" rows="5" placeholder="Type or paste text here…"></textarea>
+        </div>
+
+        <div class="row mt-8" style="gap:10px;">
+          <button class="btn btn-primary" id="encryptBtn" disabled>🔒 Encrypt</button>
+          <button class="btn btn-secondary" id="decryptBtn" disabled>🔓 Decrypt</button>
+        </div>
+
+        <div class="form-group mt-20">
+          <label class="form-label" for="outputText">Output</label>
+          <textarea id="outputText" rows="5" placeholder="Result appears here…" readonly></textarea>
+        </div>
+
+        <div class="row mt-8" style="gap:10px;">
+          <button class="btn btn-ghost" id="copyOutBtn">📋 Copy Output</button>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="card fade-in fade-in-4" style="background: rgba(0,212,255,0.04);">
+        <h3 class="mono text-accent" style="font-size:14px; margin-bottom:10px;">ℹ️ How this works</h3>
+        <p style="font-size:13px; color:var(--text-muted); line-height:1.75;">
+          Each encryption operation generates a fresh 96-bit IV using <code>crypto.getRandomValues</code>.
+          The IV is prepended to the ciphertext before base64-encoding, so decryption can recover it automatically.
+          The demo key is obfuscated with XOR-fragment reconstruction (educational only — not production-grade key management).
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/MarioHUBB" target="_blank">GitHub</a>
+        <a href="mailto:dumbamari02@gmail.com">Email</a>
+        <a href="https://www.instagram.com/modestmarioo/" target="_blank">Instagram</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-copy">© 2026 Mario · Built with 💻 &amp; curiosity · 100% client-side</div>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/security-core.js"></script>
+  <script src="js/encryption.js"></script>
+</body>
+</html>

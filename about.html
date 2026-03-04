@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Mario's Cyber Toolkit</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">mario<span>://</span>cyber</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="password.html">Password</a></li>
+      <li><a href="encryption.html">Encrypt</a></li>
+      <li><a href="ip_tools.html">IP Tools</a></li>
+      <li><a href="base_converter.html">Base Conv</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main>
+    <div class="page-wrapper">
+
+      <div class="page-title fade-in fade-in-1">
+        <p class="eyebrow">// about me</p>
+        <h1>About &amp; Contact</h1>
+        <p>The person behind the keyboard.</p>
+      </div>
+
+      <!-- Bio card -->
+      <div class="card fade-in fade-in-2">
+        <div class="card-header">
+          <h2>👤 Mario</h2>
+          <p>Cybersecurity professional &amp; developer</p>
+        </div>
+        <p class="about-intro">
+          Hello! I'm <strong>Mario</strong>, a cybersecurity professional passionate about building secure, 
+          user-friendly tools. This platform showcases practical cybersecurity concepts in an accessible, 
+          interactive format — proving that security doesn't have to be complicated or intimidating.
+        </p>
+        <p class="about-intro">
+          I focus on bridging the gap between security theory and real-world usability, building tools 
+          that help people understand how to protect themselves online.
+        </p>
+
+        <label class="form-label mt-8">Interests &amp; Skills</label>
+        <div class="skills-badges">
+          <span class="badge">Password Security</span>
+          <span class="badge">AES / Cryptography</span>
+          <span class="badge">Web Security</span>
+          <span class="badge">Web Crypto API</span>
+          <span class="badge">Secure UX Design</span>
+          <span class="badge">GitHub Pages</span>
+          <span class="badge">Static Sites</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">IP Subnetting</span>
+          <span class="badge">Number Systems</span>
+          <span class="badge">Networking</span>
+        </div>
+      </div>
+
+      <!-- Contact card -->
+      <div class="card fade-in fade-in-3">
+        <div class="card-header">
+          <h2>📬 Get in Touch</h2>
+          <p>Reach out through any of the channels below.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span class="contact-icon">📧</span>
+            <div class="contact-info">
+              <span>Email</span>
+              <a href="mailto:dumbamari02@gmail.com">dumbamari02@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">🐙</span>
+            <div class="contact-info">
+              <span>GitHub</span>
+              <a href="https://github.com/MarioHUBB" target="_blank">MarioHUBB</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">📸</span>
+            <div class="contact-info">
+              <span>Instagram</span>
+              <a href="https://www.instagram.com/modestmarioo/" target="_blank">@modestmarioo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform card -->
+      <div class="card fade-in fade-in-4" style="background: rgba(0,212,255,0.03);">
+        <div class="card-header">
+          <h2>⚙️ About This Platform</h2>
+        </div>
+        <p style="font-size:14px; color:var(--text-muted); line-height:1.75;">
+          Mario's Cyber Toolkit is a 100% static web application — no backend, no server, no tracking.
+          All security operations (entropy calculation, password generation, AES encryption) run inside your 
+          browser using the <strong>Web Crypto API</strong>. It is hosted on GitHub Pages and the full source 
+          is available on GitHub. Feel free to fork, learn from, or contribute to the project.
+        </p>
+        <div class="mt-14">
+          <a class="btn btn-ghost" href="https://github.com/MarioHUBB" target="_blank">🐙 View on GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/MarioHUBB" target="_blank">GitHub</a>
+        <a href="mailto:dumbamari02@gmail.com">Email</a>
+        <a href="https://www.instagram.com/modestmarioo/" target="_blank">Instagram</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-copy">© 2026 Mario · Built with 💻 &amp; curiosity · 100% client-side</div>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+</body>
+</html>

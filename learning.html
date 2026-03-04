@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learning Hub — Mario's Cyber Form</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">mario<span>://</span>cyber</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="password.html">Password</a></li>
+      <li><a href="encryption.html">Encrypt</a></li>
+      <li><a href="ip_tools.html">IP Tools</a></li>
+      <li><a href="base_converter.html">Base Conv</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main>
+    <div class="page-wrapper">
+
+      <div class="page-title fade-in fade-in-1">
+        <p class="eyebrow">// knowledge base</p>
+        <h1>Learning Hub</h1>
+        <p>Understand the security concepts powering this platform.</p>
+      </div>
+
+      <!-- Password entropy section -->
+      <div class="card fade-in fade-in-2">
+        <div class="learning-section">
+          <h3>🔐 Password Strength &amp; Entropy</h3>
+          <p>The password strength checker analyses the security of a password by measuring its <strong>entropy</strong> — a measure of unpredictability expressed in bits. Higher entropy means an attacker needs to try exponentially more guesses.</p>
+          <p>The formula used is:</p>
+          <p style="font-family:var(--font-mono); background:var(--surface2); padding:10px 14px; border-radius:8px; margin:10px 0; font-size:14px; color:var(--accent);">
+            entropy = length × log₂(pool_size)
+          </p>
+          <p>Where <em>pool_size</em> is the number of possible characters at each position (26 lowercase, 26 uppercase, 10 digits, 32 symbols).</p>
+          <ul>
+            <li>Under 36 bits — easily brute-forced in seconds</li>
+            <li>60–80 bits — reasonable for most online accounts</li>
+            <li>Over 80 bits — very strong; resistant to offline attacks</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Generator section -->
+      <div class="card fade-in fade-in-3">
+        <div class="learning-section">
+          <h3>⚡ Cryptographic Password Generation</h3>
+          <p>Passwords generated here use <code>window.crypto.getRandomValues()</code> — the browser's CSPRNG (cryptographically secure pseudo-random number generator). This is the same entropy source used in TLS key generation.</p>
+          <p>Key properties:</p>
+          <ul>
+            <li>Unpredictable — cannot be guessed from prior outputs</li>
+            <li>Uniform distribution — all characters equally likely</li>
+            <li>No <code>Math.random()</code> which is NOT cryptographically secure</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- AES-GCM section -->
+      <div class="card fade-in fade-in-4">
+        <div class="learning-section">
+          <h3>🛡️ AES-256-GCM Encryption</h3>
+          <p>The encryption tool uses <strong>AES-GCM</strong> (Advanced Encryption Standard — Galois/Counter Mode), a modern symmetric cipher that provides both confidentiality and authenticity.</p>
+          <ul>
+            <li><strong>Symmetric</strong> — same key encrypts and decrypts</li>
+            <li><strong>256-bit key</strong> — 2²⁵⁶ possible keys</li>
+            <li><strong>GCM mode</strong> — includes an authentication tag that detects tampering</li>
+            <li><strong>IV/nonce</strong> — a fresh 96-bit random value per encryption prevents ciphertext reuse</li>
+          </ul>
+          <p>This is the cipher used in HTTPS (TLS 1.3), Signal, and WhatsApp.</p>
+        </div>
+      </div>
+
+      <!-- Client-side section -->
+      <div class="card fade-in fade-in-5">
+        <div class="learning-section">
+          <h3>🌐 Client-Side vs Server-Side Encryption</h3>
+          <p>All operations on this platform run entirely in your browser using the <strong>Web Crypto API</strong>. No data is sent to any server. This has important implications:</p>
+          <ul>
+            <li><strong>Privacy</strong> — plaintext never leaves your device</li>
+            <li><strong>Trust</strong> — you can inspect the source code</li>
+            <li><strong>Limitation</strong> — the demo key is embedded in the page (educational only)</li>
+          </ul>
+          <p>In production, keys should be derived from user passwords (PBKDF2/Argon2) or managed by a server-side KMS — never hardcoded.</p>
+        </div>
+      </div>
+
+
+      <!-- IP Subnetting section -->
+      <div class="card fade-in fade-in-5">
+        <div class="learning-section">
+          <h3>🌐 IP Subnetting &amp; CIDR</h3>
+          <p>Subnetting divides a large IP network into smaller sub-networks. Understanding subnetting is essential for network administration, security segmentation, and exam preparation (CCNA, CompTIA Network+).</p>
+          <p>The <strong>CIDR prefix</strong> (e.g. <code>/24</code>) tells you how many bits are used for the network portion. The remaining bits are for hosts:</p>
+          <ul>
+            <li>/24 → 256 addresses, 254 usable hosts</li>
+            <li>/25 → 128 addresses, 126 usable hosts</li>
+            <li>/30 → 4 addresses, 2 usable hosts (point-to-point links)</li>
+          </ul>
+          <p>Network address = IP AND mask. Broadcast = network OR inverse mask.</p>
+        </div>
+      </div>
+
+      <!-- Number systems section -->
+      <div class="card fade-in fade-in-5">
+        <div class="learning-section">
+          <h3>🔢 Number Systems &amp; Base Conversion</h3>
+          <p>Computers work natively in binary (base 2). Hexadecimal (base 16) is a compact way to represent binary values — each hex digit maps to exactly 4 bits.</p>
+          <ul>
+            <li><strong>Binary (base 2)</strong> — digits 0 and 1. Used in CPU instructions, memory, networking</li>
+            <li><strong>Octal (base 8)</strong> — digits 0–7. Used in Unix file permissions</li>
+            <li><strong>Decimal (base 10)</strong> — digits 0–9. Human-readable numbers</li>
+            <li><strong>Hex (base 16)</strong> — digits 0–9 + A–F. MAC addresses, colour codes, memory dumps</li>
+          </ul>
+          <p>In cybersecurity and digital forensics, fluency in hex is essential for reading memory dumps, shellcode, and packet captures.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/MarioHUBB" target="_blank">GitHub</a>
+        <a href="mailto:dumbamari02@gmail.com">Email</a>
+        <a href="https://www.instagram.com/modestmarioo/" target="_blank">Instagram</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-copy">© 2026 Mario · Built with 💻 &amp; curiosity · 100% client-side</div>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+</body>
+</html>

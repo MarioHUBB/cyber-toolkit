@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mario's Cyber Toolkit</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">mario<span>://</span>cyber</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="password.html">Password</a></li>
+      <li><a href="encryption.html">Encrypt</a></li>
+      <li><a href="ip_tools.html">IP Tools</a></li>
+      <li><a href="base_converter.html">Base Conv</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main>
+    <div class="page-wrapper">
+
+      <div class="hero fade-in fade-in-1">
+        <p class="hero-eyebrow">// cybersecurity &amp; networking toolkit</p>
+        <h1>Mario's Cyber Toolkit</h1>
+        <p>An interactive platform for cybersecurity and networking tools. Password analysis, AES encryption, IP subnetting, and number base conversion — all client-side. Nothing leaves your browser.</p>
+      </div>
+
+      <div class="tool-grid">
+        <a class="tool-card fade-in fade-in-2" href="password.html">
+          <div class="tool-card-icon">🔐</div>
+          <div class="tool-card-title">Password Strength Checker</div>
+          <div class="tool-card-desc">Entropy analysis, pattern detection, and cryptographically secure password generation.</div>
+          <div class="tool-card-arrow">→ Open tool</div>
+        </a>
+
+        <a class="tool-card fade-in fade-in-2" href="encryption.html">
+          <div class="tool-card-icon">🛡️</div>
+          <div class="tool-card-title">Encryption / Decryption</div>
+          <div class="tool-card-desc">AES-256-GCM symmetric encryption running entirely in your browser.</div>
+          <div class="tool-card-arrow">→ Open tool</div>
+        </a>
+
+        <a class="tool-card fade-in fade-in-3" href="ip_tools.html">
+          <div class="tool-card-icon">🌐</div>
+          <div class="tool-card-title">IP Address Tools</div>
+          <div class="tool-card-desc">Subnet calculator, CIDR ↔ mask converter, host range, broadcast address and more.</div>
+          <div class="tool-card-arrow">→ Open tool</div>
+        </a>
+
+        <a class="tool-card fade-in fade-in-3" href="base_converter.html">
+          <div class="tool-card-icon">🔢</div>
+          <div class="tool-card-title">Base Converter</div>
+          <div class="tool-card-desc">Convert numbers between binary, octal, decimal, hexadecimal and any base 2–16.</div>
+          <div class="tool-card-arrow">→ Open tool</div>
+        </a>
+
+        <a class="tool-card fade-in fade-in-4" href="learning.html">
+          <div class="tool-card-icon">📚</div>
+          <div class="tool-card-title">Learning Hub</div>
+          <div class="tool-card-desc">Understand entropy, symmetric encryption, subnetting, and number systems.</div>
+          <div class="tool-card-arrow">→ Start learning</div>
+        </a>
+
+        <a class="tool-card fade-in fade-in-4" href="about.html">
+          <div class="tool-card-icon">👤</div>
+          <div class="tool-card-title">About &amp; Contact</div>
+          <div class="tool-card-desc">Learn about Mario and this platform, and get in touch.</div>
+          <div class="tool-card-arrow">→ Say hello</div>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/MarioHUBB" target="_blank">GitHub</a>
+        <a href="mailto:dumbamari02@gmail.com">Email</a>
+        <a href="https://www.instagram.com/modestmarioo/" target="_blank">Instagram</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-copy">© 2026 Mario · 100% client-side · No data leaves your browser</div>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

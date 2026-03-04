@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Base Converter — Mario's Cyber Toolkit</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">mario<span>://</span>cyber</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="password.html">Password</a></li>
+      <li><a href="encryption.html">Encrypt</a></li>
+      <li><a href="ip_tools.html">IP Tools</a></li>
+      <li><a href="base_converter.html">Base Conv</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-wrapper">
+
+      <div class="page-title fade-in fade-in-1">
+        <p class="eyebrow">// tool — 04</p>
+        <h1>Base Converter</h1>
+        <p>Convert numbers between binary, octal, decimal, hexadecimal, or any base from 2 to 16.</p>
+      </div>
+
+      <div class="card fade-in fade-in-2">
+        <div class="card-header">
+          <h2>🔢 Number Base Conversion</h2>
+          <p>Enter a number, select the source base and the target base, then convert.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="numberInput">Number to convert</label>
+          <input type="text" id="numberInput" placeholder="e.g. 1011, 2F, 255, 77" autocomplete="off" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fromBase">From base</label>
+            <select id="fromBase">
+              <option value="2">Base 2 — Binary</option>
+              <option value="8">Base 8 — Octal</option>
+              <option value="10" selected>Base 10 — Decimal</option>
+              <option value="16">Base 16 — Hexadecimal</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="toBase">To base</label>
+            <select id="toBase">
+              <option value="2">Base 2 — Binary</option>
+              <option value="8">Base 8 — Octal</option>
+              <option value="10">Base 10 — Decimal</option>
+              <option value="16" selected>Base 16 — Hexadecimal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-8">
+          <button class="btn btn-primary" onclick="convertBase()">Convert</button>
+        </div>
+
+        <div class="output-box mt-14" id="convOutput">Result will appear here…</div>
+      </div>
+
+      <!-- Quick reference -->
+      <div class="card fade-in fade-in-3" style="background:rgba(0,119,204,0.03);">
+        <h3 class="mono text-accent" style="font-size:14px; margin-bottom:12px;">📋 Quick Reference</h3>
+        <table class="result-table">
+          <tr><td>Decimal</td><td>Binary</td></tr>
+          <tr><td>0</td><td>0000</td></tr>
+          <tr><td>5</td><td>0101</td></tr>
+          <tr><td>10</td><td>1010</td></tr>
+          <tr><td>15</td><td>1111</td></tr>
+          <tr><td>255</td><td>11111111</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/MarioHUBB" target="_blank">GitHub</a>
+        <a href="mailto:dumbamari02@gmail.com">Email</a>
+        <a href="https://www.instagram.com/modestmarioo/" target="_blank">Instagram</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="footer-copy">© 2026 Mario · 100% client-side · No data leaves your browser</div>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/base_converter.js"></script>
+</body>
+</html>
