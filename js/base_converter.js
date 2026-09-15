@@ -19,7 +19,7 @@ function convertBase() {
     var decimal = parseInt(number, fromBase);
 
     if (isNaN(decimal)) {
-      outEl.innerHTML = '<span style="color:var(--danger)">⚠️  Invalid digits for base ' + fromBase + '</span>';
+      outEl.innerHTML = '<span style="color:var(--danger)">Invalid digits for base ' + fromBase + '</span>';
       showToast('Invalid digits for base ' + fromBase, 'error');
       return;
     }
