@@ -40,13 +40,13 @@
 
       <!-- Key status -->
       <div class="card fade-in fade-in-2" style="padding:14px 20px;">
-        <span class="mono text-muted" id="keyStatus" style="font-size:13px;">⏳ Loading AES-256-GCM key…</span>
+        <span class="mono text-muted" id="keyStatus" style="font-size:13px;">Loading AES-256-GCM key…</span>
       </div>
 
       <!-- Encrypt / Decrypt card -->
       <div class="card fade-in fade-in-3">
         <div class="card-header">
-          <h2>🛡️ Encrypt or Decrypt Text</h2>
+          <h2>Encrypt or Decrypt Text</h2>
           <p>Paste plaintext to encrypt, or paste a base64 ciphertext blob to decrypt.</p>
         </div>
 
@@ -56,8 +56,8 @@
         </div>
 
         <div class="row mt-8" style="gap:10px;">
-          <button class="btn btn-primary" id="encryptBtn" disabled>🔒 Encrypt</button>
-          <button class="btn btn-secondary" id="decryptBtn" disabled>🔓 Decrypt</button>
+          <button class="btn btn-primary" id="encryptBtn" disabled>Encrypt</button>
+          <button class="btn btn-secondary" id="decryptBtn" disabled>Decrypt</button>
         </div>
 
         <div class="form-group mt-20">
@@ -66,13 +66,13 @@
         </div>
 
         <div class="row mt-8" style="gap:10px;">
-          <button class="btn btn-ghost" id="copyOutBtn">📋 Copy Output</button>
+          <button class="btn btn-ghost" id="copyOutBtn">Copy Output</button>
         </div>
       </div>
 
       <!-- Info card -->
       <div class="card fade-in fade-in-4" style="background: rgba(0,212,255,0.04);">
-        <h3 class="mono text-accent" style="font-size:14px; margin-bottom:10px;">ℹ️ How this works</h3>
+        <h3 class="mono text-accent" style="font-size:14px; margin-bottom:10px;">How this works</h3>
         <p style="font-size:13px; color:var(--text-muted); line-height:1.75;">
           Each encryption operation generates a fresh 96-bit IV using <code>crypto.getRandomValues</code>.
           The IV is prepended to the ciphertext before base64-encoding, so decryption can recover it automatically.
@@ -92,7 +92,7 @@
         <a href="https://www.instagram.com/modestmarioo/" target="_blank">Instagram</a>
         <a href="about.html">About</a>
       </div>
-      <div class="footer-copy">© 2026 Mario · Built with 💻 &amp; curiosity · 100% client-side</div>
+      <div class="footer-copy">© 2026 Mario · Built with &amp; curiosity · 100% client-side</div>
     </div>
   </footer>
 
