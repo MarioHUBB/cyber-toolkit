@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const advice = getPasswordAdvice(pw);
     adviceList.innerHTML = advice.length
       ? advice.map(a => `<li>${a}</li>`).join('')
-      : '<li style="color:var(--accent3);border-left-color:var(--accent3)">Looks good! 🔒</li>';
+      : '<li style="color:var(--accent3);border-left-color:var(--accent3)">Looks good!</li>';
   }
 
   pwInput.addEventListener('input', updateStrength);
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!val) { showToast('Nothing to copy', 'warn'); return; }
     try {
       await navigator.clipboard.writeText(val);
-      showToast('Password copied to clipboard! 📋');
+      showToast('Password copied to clipboard!');
     } catch (e) {
       showToast('Copy failed: ' + e.message, 'error');
     }
