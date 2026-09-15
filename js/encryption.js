@@ -19,14 +19,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     cryptoKey = await importDemoKey();
     if (keyStatus) {
-      keyStatus.textContent = '🔑 Demo key loaded — AES-256-GCM ready';
+      keyStatus.textContent = 'Demo key loaded — AES-256-GCM ready';
       keyStatus.style.color = 'var(--accent3)';
     }
     encryptBtn.disabled = false;
     decryptBtn.disabled = false;
   } catch (e) {
     if (keyStatus) {
-      keyStatus.textContent = '⚠️ Key import failed: ' + e.message;
+      keyStatus.textContent = 'Key import failed: ' + e.message;
       keyStatus.style.color = 'var(--danger)';
     }
     showToast('Failed to initialise crypto key: ' + e.message, 'error', 5000);
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     encryptBtn.textContent = 'Encrypting…';
     try {
       outputText.value = await aesEncrypt(txt, cryptoKey);
-      showToast('Encryption successful 🔒');
+      showToast('Encryption successful');
     } catch (e) {
       showToast('Encryption failed: ' + e.message, 'error');
     } finally {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     decryptBtn.textContent = 'Decrypting…';
     try {
       outputText.value = await aesDecrypt(txt, cryptoKey);
-      showToast('Decryption successful 🔓');
+      showToast('Decryption successful');
     } catch (e) {
       showToast('Decryption failed — ensure you pasted valid ciphertext', 'error');
     } finally {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!val) { showToast('Nothing to copy', 'warn'); return; }
     try {
       await navigator.clipboard.writeText(val);
-      showToast('Output copied to clipboard! 📋');
+      showToast('Output copied to clipboard!');
     } catch (e) {
       showToast('Copy failed: ' + e.message, 'error');
     }
